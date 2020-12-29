@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+<h3>Yıl başı Çekişi</h3>
+<div class="row">
+    <div class="col-md-12">
+        <ul>
+            <li>İsim + Enter :D</li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Match">
+
+
+            <textarea id="nameList" name="nameList" class="form-control" style="height:200px;"></textarea>
+
+            <input class="btn btn-primary btn-block" type="submit" value="Eşleştiriyim mi 'Reyiss'" />
+        </form>
+    </div>
+    @if (ViewBag.Model != null)
+    {
+        if (!string.IsNullOrEmpty(ViewBag.errorMessage))
+        {
+            <div class="col-md-12" style="margin-top:5%;">
+                <label style="font-size:20px;" class="text-danger">@ViewBag.errorMessage</label>
+            </div>
+        }
+
+
+        if (ViewBag.isShow == true)
+        {
+            <div style="width: 100%;margin-top:5%;">
+                <div class="col-md-12">
+                    <table class="table table-responsive-lg">
+                        <thead>
+                            <tr class="text-center">
+                                <th style="color:cornflowerblue">Hediye Veren</th>
+                                <th style="color:cornflowerblue">Hediye Alan</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in ViewBag.Model)
+                            {
+                                <tr class="text-center">
+                                    <td style="color">@item.Key</td>
+                                    <td>@item.Value</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        }
+
+    }
+
+
+
+</div>
+
