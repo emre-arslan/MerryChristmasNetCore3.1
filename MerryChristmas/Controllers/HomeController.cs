@@ -35,7 +35,7 @@ namespace MerryChristmas.Controllers
 
                 arrayName.RemoveAll(w => string.Empty == w);
 
-                foreach (var item in arrayName)
+                foreach (var item in arrayName.ToList())
                 {
                     var sameNames = arrayName.Where(w => w.Equals(item)).ToList();
                     if (sameNames.Count > 1)
