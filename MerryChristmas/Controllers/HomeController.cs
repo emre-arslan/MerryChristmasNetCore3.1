@@ -35,16 +35,13 @@ namespace MerryChristmas.Controllers
 
                 arrayName.RemoveAll(w => string.Empty == w);
 
-
                 foreach (var item in arrayName)
                 {
                     var sameNames = arrayName.Where(w => w.Equals(item)).ToList();
-
                     if (sameNames.Count > 1)
                     {
                         sameNames.ForEach(name =>
                         {
-
                             int index = arrayName.IndexOf(name);
                             arrayName[index] = string.Format($"Listede {arrayName.IndexOf(name) + 1}. Sırada ki {arrayName[index]}");
 
@@ -52,29 +49,11 @@ namespace MerryChristmas.Controllers
                     }
 
                 }
-                //for (int i = 0; i < arrayName.Count; i++)
-                //{
-                //    if (string.IsNullOrEmpty(arrayName[i]))
-                //        arrayName.RemoveAt(i);
-                //    var sameNames = arrayName.Where(w => w.Equals(arrayName[i])).ToList();
-
-                //    if (sameNames.Count > 1)
-                //    {
-                //        sameNames.ForEach(name =>
-                //        {
-
-                //            int index = arrayName.IndexOf(name);
-                //            arrayName[index] = string.Format($"Listede {arrayName.IndexOf(name) + 1}. Sırada ki {arrayName[index]}");
-
-                //        });
-                //    }
-
-                //}
                 if (arrayName.Count % 2 != 0)
                 {
                     ViewBag.isShow = false;
                     ViewBag.errorMessage = string.Format($"Hadi diyelim eşledim sence {arrayName.Count} kişi eşit dağıtılır mı bir kişi açıkta mı kalır? cevabını dinliyorum microfonunu aktif ettim şu an.");
-                    //return;
+
                 }
                 else
                 {
@@ -104,7 +83,6 @@ namespace MerryChristmas.Controllers
 
                 ViewBag.Model = ss;
             }
-
             return View("Index");
         }
         private int RandomNumber(int arrayLength)
